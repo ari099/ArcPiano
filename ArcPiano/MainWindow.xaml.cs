@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,8 +31,17 @@ namespace ArcPiano {
         public void PlayNote(object sender, EventArgs e) {
             // ...
             Button key = sender as Button;
-            string name = key.Name;
+            string name = "";
 
+            if (key.Name.ToLower().Length == 5)
+                name = key.Name.ToLower()[0].ToString();
+            else {
+                name = key.Name.ToLower()[0].ToString() + "#-";
+                name += name = key.Name.ToLower()[1].ToString() + "b";
+            }
+
+            NotePlayer.Source = new Uri("C:\\Users\\alore\\Documents\\Toychest\\C#\\ArcPiano\\ArcPiano\\notes\\" + name + ".mp3");
+            NotePlayer.Play();
         }
     }
 }

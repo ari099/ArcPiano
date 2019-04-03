@@ -101,8 +101,20 @@
   <ItemGroup>
     <Resource Include="icon_G4L_icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="notes\" />
+    <Content Include="notes\a#-bb.mp3" />
+    <Content Include="notes\a.mp3" />
+    <Content Include="notes\b.mp3" />
+    <Content Include="notes\c#-db.mp3" />
+    <Content Include="notes\c.mp3" />
+    <Content Include="notes\d#-eb.mp3" />
+    <Content Include="notes\d.mp3" />
+    <Content Include="notes\e.mp3" />
+    <Content Include="notes\f#-gb.mp3" />
+    <Content Include="notes\f.mp3" />
+    <Content Include="notes\g#-ab.mp3" />
+    <Content Include="notes\g.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
