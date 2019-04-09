@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ArcPiano.custom_objects;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 
@@ -29,12 +30,12 @@ namespace ArcPiano {
         }
 
         /// <summary>
-        /// Play a musical note from the WPF piano
+        /// Piano key event handler
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void PlayNote(object sender, EventArgs e) {
-            // Locate piano key button
+        public async void NoteEventHandler(object sender, EventArgs e) {
+            // Getting the piano key
             Button key = sender as Button;
             string name = "";
 
@@ -46,18 +47,8 @@ namespace ArcPiano {
                 name += name = key.Name.ToLower()[1].ToString() + "b";
             }
 
-            // Play the note
-            using (var ms = File.OpenRead("C:\\Users\\alore\\Documents\\Toychest\\C#\\ArcPiano\\ArcPiano\\notes\\" + name + ".mp3"))
-            using (var rdr = new Mp3FileReader(ms))
-            using (var wavStream = WaveFormatConversionStream.CreatePcmStream(rdr))
-            using (var baStream = new BlockAlignReductionStream(wavStream))
-            using (var waveOut = new WaveOut(WaveCallbackInfo.FunctionCallback())) {
-                waveOut.Init(baStream);
-                waveOut.Play();
-                while (waveOut.PlaybackState == PlaybackState.Playing) {
-                    await Task.Delay(100);
-                }
-            }
+            // Play piano note
+            Piano.PlayNote(name);
         }
     }
 }
