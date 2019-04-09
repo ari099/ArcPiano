@@ -34,7 +34,7 @@ namespace ArcPiano {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void NoteEventHandler(object sender, EventArgs e) {
+        public void NoteEventHandler(object sender, EventArgs e) {
             // Getting the piano key
             Button key = sender as Button;
             string name = "";
